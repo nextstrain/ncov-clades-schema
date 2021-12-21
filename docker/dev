@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+trap "exit" INT
+
+# Directory where this script resides
+THIS_DIR=$(cd $(dirname "${BASH_SOURCE[0]}"); pwd)
+
+# Where the source code is
+PROJECT_ROOT_DIR="$(realpath --logical --no-symlinks "${THIS_DIR}/..")"
+
+DOCKER_IMAGE_NAME="nextstrain/ncov-clades-schema-dev"
+DOCKER_CONTAINER_NAME="${DOCKER_IMAGE_NAME//\//-}"
+
+DEFAULT_RUN_COMMAND="\
+  yarn dev
+"
+
+DEFAULT_EXEC_COMMAND="\
+  bash
+"
+
+docker build -q -t "${DOCKER_IMAGE_NAME}:latest" -f "${THIS_DIR}/dev.dockerfile" "${PROJECT_ROOT_DIR}" >/dev/null
+
+mkdir -p .next .cache
+
+DOCKER_PS_RESULT=$(docker ps -f "name=${DOCKER_CONTAINER_NAME}" --format '{{.Names}}')
+if [ "${DOCKER_PS_RESULT}" == "${DOCKER_CONTAINER_NAME}" ]; then
+  # If already running, exec a command in the existing instance
+  docker exec -it \
+    --user="$(id -u):$(id -g)" \
+    --workdir="/workdir" \
+    --env="USER=user" \
+    --env="PS1=\${USER}@\${HOST}" \
+    ${DOCKER_CONTAINER_NAME} \
+    bash -c "${*:-${DEFAULT_EXEC_COMMAND}}"
+else
+  # If not already running, run
+  COMMAND=""
+  docker run -it --rm \
+    --init \
+    --name="${DOCKER_CONTAINER_NAME}" \
+    --hostname="${DOCKER_IMAGE_NAME}" \
+    --user="$(id -u):$(id -g)" \
+    --volume="${PROJECT_ROOT_DIR}:/workdir" \
+    --workdir="/workdir" \
+    --env="USER=user" \
+    --env="PS1=\${USER}@\${HOST}" \
+    -p 3000:3000 \
+    ${DOCKER_IMAGE_NAME} \
+    bash -c "${*:-${DEFAULT_RUN_COMMAND}}"
+fi

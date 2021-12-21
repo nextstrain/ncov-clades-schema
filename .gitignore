@@ -1,0 +1,4 @@
+*.log
+/\.cache
+/\.next
+/node_modules

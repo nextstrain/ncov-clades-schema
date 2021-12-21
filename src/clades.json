@@ -1,0 +1,88 @@
+{
+  "name": "19A",
+  "color": "#4137C2",
+  "children": [
+    {
+      "name": "20A",
+      "color": "#4B8DC2",
+      "children": [
+        {
+          "name": "20B",
+          "color": "#5DA8A3",
+          "children": [
+            {
+              "name": "20I (Alpha, V1)",
+              "color": "#DC2F24"
+            },
+            {
+              "name": "20J (Gamma, V3)",
+              "color": "#8C3F64"
+            },
+            {
+              "name": "20F",
+              "color": "#D4B13F"
+            },
+            {
+              "name": "20D",
+              "color": "#96BD60"
+            },
+            {
+              "name": "21E (Theta)",
+              "color": "#AD4823"
+            },
+            {
+              "name": "21G (Lambda)",
+              "color": "#118899"
+            },
+            {
+              "name": "21H",
+              "color": "#448899"
+            }
+          ]
+        },
+        {
+          "name": "20C",
+          "color": "#77B67F",
+          "children": [
+            {
+              "name": "20H (Beta, V2)",
+              "color": "#E4672F"
+            },
+            {
+              "name": "20G",
+              "color": "#E59638"
+            },
+            {
+              "name": "21C (Epsilon)",
+              "color": "#07A67F"
+            },
+            {
+              "name": "21F (Iota)",
+              "color": "#37D67F"
+            }
+          ]
+        },
+        {
+          "name": "20E (EU1)",
+          "color": "#B8BC4B"
+        },
+        {
+          "name": "21A (Delta)",
+          "color": "#7B8DC2"
+        },
+        {
+          "name": "21B (Kappa)",
+          "color": "#7B8D82"
+        },
+        {
+          "name": "21D (Eta)",
+          "color": "#AB8D02"
+        }
+      ]
+    },
+    {
+      "name": "19B",
+      "color": "#4066CF"
+    }
+  ]
+}
