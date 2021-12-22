@@ -1,88 +1,114 @@
 {
+  "color": "#f77189",
   "name": "19A",
-  "color": "#4137C2",
   "children": [
     {
-      "name": "20A",
-      "color": "#4B8DC2",
-      "children": [
-        {
-          "name": "20B",
-          "color": "#5DA8A3",
-          "children": [
-            {
-              "name": "20I (Alpha, V1)",
-              "color": "#DC2F24"
-            },
-            {
-              "name": "20J (Gamma, V3)",
-              "color": "#8C3F64"
-            },
-            {
-              "name": "20F",
-              "color": "#D4B13F"
-            },
-            {
-              "name": "20D",
-              "color": "#96BD60"
-            },
-            {
-              "name": "21E (Theta)",
-              "color": "#AD4823"
-            },
-            {
-              "name": "21G (Lambda)",
-              "color": "#118899"
-            },
-            {
-              "name": "21H",
-              "color": "#448899"
-            }
-          ]
-        },
-        {
-          "name": "20C",
-          "color": "#77B67F",
-          "children": [
-            {
-              "name": "20H (Beta, V2)",
-              "color": "#E4672F"
-            },
-            {
-              "name": "20G",
-              "color": "#E59638"
-            },
-            {
-              "name": "21C (Epsilon)",
-              "color": "#07A67F"
-            },
-            {
-              "name": "21F (Iota)",
-              "color": "#37D67F"
-            }
-          ]
-        },
-        {
-          "name": "20E (EU1)",
-          "color": "#B8BC4B"
-        },
-        {
-          "name": "21A (Delta)",
-          "color": "#7B8DC2"
-        },
-        {
-          "name": "21B (Kappa)",
-          "color": "#7B8D82"
-        },
-        {
-          "name": "21D (Eta)",
-          "color": "#AB8D02"
-        }
-      ]
+      "color": "#f7745f",
+      "name": "19B"
     },
     {
-      "name": "19B",
-      "color": "#4066CF"
+      "color": "#e98132",
+      "name": "20A",
+      "children": [
+        {
+          "color": "#d18e32",
+          "name": "20B",
+          "children": [
+            {
+              "color": "#be9732",
+              "name": "20D",
+              "children": [
+                {
+                  "color": "#ae9d31",
+                  "name": "21G (Lambda)"
+                }
+              ]
+            },
+            {
+              "color": "#9ca231",
+              "name": "20F"
+            },
+            {
+              "color": "#86a831",
+              "name": "20I (Alpha)"
+            },
+            {
+              "color": "#63ae31",
+              "name": "20J (Gamma)"
+            },
+            {
+              "color": "#32b252",
+              "name": "21E (Theta)"
+            },
+            {
+              "color": "#33b07a",
+              "name": "21M (Omicron)",
+              "children": [
+                {
+                  "color": "#34af8f",
+                  "name": "21K (Omicron)"
+                },
+                {
+                  "color": "#35ad9e",
+                  "name": "21L (Omicron)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "color": "#36acaa",
+          "name": "20C",
+          "children": [
+            {
+              "color": "#37abb7",
+              "name": "20G"
+            },
+            {
+              "color": "#38a9c5",
+              "name": "20H (Beta)"
+            },
+            {
+              "color": "#3aa6d9",
+              "name": "21C (Epsilon)"
+            },
+            {
+              "color": "#4aa0f4",
+              "name": "21F (Iota)"
+            }
+          ]
+        },
+        {
+          "color": "#8795f4",
+          "name": "20E"
+        },
+        {
+          "color": "#ac89f4",
+          "name": "21A (Delta)",
+          "children": [
+            {
+              "color": "#cc7af4",
+              "name": "21I (Delta)"
+            },
+            {
+              "color": "#ee61f4",
+              "name": "21J (Delta)"
+            }
+          ]
+        },
+        {
+          "color": "#f562da",
+          "name": "21B (Kappa)"
+        },
+        {
+          "color": "#f668c0",
+          "name": "21D (Eta)"
+        },
+        {
+          "color": "#f66ca7",
+          "name": "21H (Mu)"
+        }
+      ]
     }
   ]
 }
