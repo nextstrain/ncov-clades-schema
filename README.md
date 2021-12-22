@@ -4,6 +4,12 @@ https://ncov-clades-schema.vercel.app/
 
 Visualizes current tree of SARS-CoV-2 clades. Allows to generate an SVG image of this tree.
 
+<p align="center">
+<a href="https://raw.githubusercontent.com/nextstrain/ncov-clades-schema/master/clades.svg" target="_blank" rel="noopener noreferrer">
+  <img width="500" alt="Tree of Nextstrain clades" src="https://raw.githubusercontent.com/nextstrain/ncov-clades-schema/master/clades.svg"/>
+</a>
+</p>
+
 Comes originally from these sandboxes:
 
  - https://bl.ocks.org/trvrb/66b2c193117220200eb8e09190a43c85
