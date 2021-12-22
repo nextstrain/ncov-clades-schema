@@ -1,0 +1,29 @@
+name: update-clades-json
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo content
+        uses: actions/checkout@v2
+
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.9.7"
+          cache: "pip"
+          cache-dependency-path: "src/requirements.txt"
+
+      - name: install python packages
+        run: pip install -r src/requirements.txt
+
+      - name: run update script
+        run: python src/generate_clade_json.py
+
+      - name: commit updates
+        uses: stefanzweifel/git-auto-commit-action@v4
