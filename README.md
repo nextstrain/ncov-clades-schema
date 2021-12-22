@@ -1,5 +1,7 @@
 # ncov-clade-schema
 
+https://ncov-clades-schema.vercel.app/
+
 Visualizes current tree of SARS-CoV-2 clades. Allows to generate an SVG image of this tree.
 
 Comes originally from these sandboxes:
