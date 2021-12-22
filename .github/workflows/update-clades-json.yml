@@ -20,10 +20,12 @@ jobs:
           cache-dependency-path: "src/requirements.txt"
 
       - name: install python packages
-        run: pip install -r src/requirements.txt
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r src/requirements.txt
 
       - name: run update script
-        run: python src/generate_clade_json.py
+        run: python src/generate_clades_json.py
 
       - name: commit updates
         uses: stefanzweifel/git-auto-commit-action@v4
