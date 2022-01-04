@@ -14,9 +14,11 @@ export interface CladesJson {
 }
 
 export function NextstrainCladesSchema({ d3Ref }: { d3Ref: RefObject<SVGSVGElement> }) {
-  const margin = { top: 50, right: 50, bottom: 0, left: 50 }
-  const width = 1200 - margin.left - margin.right
-  const height = 800 - margin.top - margin.bottom
+  const margin = { top: 0, right: 0, bottom: 0, left: 75 }
+
+  const width = 1000 // Change this when the tree grows
+  const height = 600 // Change this when the tree grows
+
   const options = { margin, width, height }
 
   useEffect(() => {
@@ -27,7 +29,7 @@ export function NextstrainCladesSchema({ d3Ref }: { d3Ref: RefObject<SVGSVGEleme
   })
 
   return (
-    <div>
+    <div style={{ width: '1000px' }}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="d3-component"
@@ -35,7 +37,7 @@ export function NextstrainCladesSchema({ d3Ref }: { d3Ref: RefObject<SVGSVGEleme
           fontFamily: 'sans-serif',
           fontSize: '1.25rem',
         }}
-        viewBox={`-70 0 ${width - 70} ${height}`}
+        viewBox={`0 0 ${width} ${height}`}
         ref={d3Ref}
       />
     </div>
