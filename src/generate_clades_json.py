@@ -7,7 +7,7 @@ import pandas as pd
 import seaborn as sns
 
 #%%
-df = pd.read_csv('https://raw.githubusercontent.com/nextstrain/ncov/7796ad66ed51c12663bd7b5ecc3c1084bda41151/defaults/clade_hierarchy.tsv', sep='\t')
+df = pd.read_csv('https://raw.githubusercontent.com/nextstrain/ncov/master/defaults/clade_hierarchy.tsv', sep='\t')
 df.fillna(value='', inplace=True)
 df
 # %%
