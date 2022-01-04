@@ -1,10 +1,7 @@
 import * as d3 from 'd3'
 
 export function createCladesSchema(svgElem, clades, options) {
-  console.log({ options })
   const { margin, width, height } = options
-
-  console.log(svgElem)
 
   const svg = d3.select(svgElem)
   svg.selectAll('*').remove()
@@ -18,9 +15,6 @@ export function createCladesSchema(svgElem, clades, options) {
     .append('g')
     .attr('transform', `translate(${margin.left},${margin.top})`)
 
-  let i = 0
-  const duration = 750
-
   // declares a tree layout and assigns the size
   const treemap = d3.tree().size([height, width])
 
@@ -28,6 +22,8 @@ export function createCladesSchema(svgElem, clades, options) {
   const root = d3.hierarchy(clades, (d) => d.children)
   root.x0 = height / 2
   root.y0 = 0
+
+  const i = 0
 
   update(root)
 
@@ -55,7 +51,6 @@ export function createCladesSchema(svgElem, clades, options) {
       .append('g')
       .attr('class', 'node')
       .attr('transform', (d) => `translate(${source.y0},${source.x0})`)
-      .on('click', click)
 
     // Add Circle for the nodes
     nodeEnter
@@ -87,7 +82,6 @@ export function createCladesSchema(svgElem, clades, options) {
       .attr('r', 15)
       .style('fill', (d) => d3.rgb(d.data.color).brighter(0.2))
       .style('stroke', (d) => d3.rgb(d.data.color).darker(0.2))
-      .attr('cursor', 'pointer')
 
     // Remove any exiting nodes
     const nodeExit = node
@@ -146,18 +140,6 @@ export function createCladesSchema(svgElem, clades, options) {
               C ${(s.y + d.y) / 2} ${s.x},
                 ${(s.y + d.y) / 2} ${d.x},
                 ${d.y} ${d.x}`
-    }
-
-    // Toggle children on click.
-    function click(d) {
-      if (d.children) {
-        d._children = d.children
-        d.children = null
-      } else {
-        d.children = d._children
-        d._children = null
-      }
-      update(d)
     }
   }
 }
