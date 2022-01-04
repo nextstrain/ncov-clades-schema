@@ -15,8 +15,8 @@ export interface CladesJson {
 
 export function NextstrainCladesSchema({ d3Ref }: { d3Ref: RefObject<SVGSVGElement> }) {
   const margin = { top: 50, right: 50, bottom: 0, left: 50 }
-  const width = 1500 - margin.left - margin.right
-  const height = 600 - margin.top - margin.bottom
+  const width = 1200 - margin.left - margin.right
+  const height = 800 - margin.top - margin.bottom
   const options = { margin, width, height }
 
   useEffect(() => {
