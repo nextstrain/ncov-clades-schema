@@ -30,10 +30,10 @@ yarn install
 yarn dev
 ```
 
-Open browser at 
+Run the script to generate `clades.svg`:
 
-```
-http://localhost:3000
+```bash
+node src/createCladesSchema.js 
 ```
 
 
@@ -46,8 +46,8 @@ Have Docker installed. Run
 ./docker/dev yarn dev
 ```
 
-Open browser at 
+Run the script to generate `clades.svg`:
 
-```
-http://localhost:3000
+```bash
+./docker/dev node src/createCladesSchema.js 
 ```
