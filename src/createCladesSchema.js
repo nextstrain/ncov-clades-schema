@@ -5,17 +5,32 @@ import {writeFile, readFileSync} from "fs";
 import path from "path";
 import {fileURLToPath} from 'url';
 
+// Creates a curved (diagonal) path from parent to the child nodes
+const diagonal = (s, d) => `M ${s.y} ${s.x} C ${(s.y + d.y) / 2} ${s.x}, ${(s.y + d.y) / 2} ${d.x}, ${d.y} ${d.x}`;
+
 export function renderSVG(clades, options) {
   const {margin, width, height} = options
 
-  const treemap = tree().size([height - margin.top - margin.bottom, width - margin.left - margin.right])
-
+  const treemap = tree().size([height, width])
   const root = hierarchy(clades, (d) => d.children)
 
   // Assigns the x and y position for the nodes
   const treeData = treemap(root)
 
-  // Compute the new tree layout.
+  // Find bounding-box of node coordinates
+  let x0 = Infinity;
+  let x1 = -x0;
+  let y0 = Infinity;
+  let y1 = -y0;
+    root.each(d => {
+    if (d.x > x1) x1 = d.x;
+    if (d.x < x0) x0 = d.x;
+
+    if (d.y > y1) y1 = d.y;
+    if (d.y < y0) y0 = d.y;
+  });
+
+
   const nodes = treeData.descendants()
   const links = treeData.descendants().slice(1)
 
@@ -32,7 +47,7 @@ export function renderSVG(clades, options) {
 
   const svgString = `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${width} ${height}">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 ${x0-margin.top} ${y1 - y0 + margin.left + margin.right} ${x1 - x0 + margin.top + margin.bottom}">
 <g transform="translate(${margin.left},${margin.top})">
 ${linkString}
 ${nodeString}
@@ -41,17 +56,14 @@ ${nodeString}
     `;
 
   return svgString;
-
-  // Creates a curved (diagonal) path from parent to the child nodes
-  function diagonal(s, d) {
-    return `M ${s.y} ${s.x} C ${(s.y + d.y) / 2} ${s.x}, ${(s.y + d.y) / 2} ${d.x}, ${d.y} ${d.x}`
-  }
 }
 
-const margin = {top: 0, right: 0, bottom: 0, left: 75}
+// N.B. increase the left or right margins if clade names get longer and are truncated
+const margin = {top: 0, right: 200, bottom: 0, left: 75}
 
-const width = 1000 // Change this when the tree grows
-const height = 600 // Change this when the tree grows
+// N.B. should only need to change width/height if you want to change the aspect ratio
+const width = 1000
+const height = 600
 
 const options = {margin, width, height}
 
