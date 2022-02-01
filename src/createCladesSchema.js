@@ -47,7 +47,7 @@ export function renderSVG(clades, options) {
 
   const svgString = `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 ${x0-margin.top} ${y1 - y0 + margin.left + margin.right} ${x1 - x0 + margin.top + margin.bottom}">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="${y0} ${x0} ${y1 - y0 + margin.left + margin.right} ${x1 - x0 + margin.top + margin.bottom}">
 <g transform="translate(${margin.left},${margin.top})">
 ${linkString}
 ${nodeString}
@@ -58,8 +58,9 @@ ${nodeString}
   return svgString;
 }
 
-// N.B. increase the left or right margins if clade names get longer and are truncated
-const margin = {top: 0, right: 200, bottom: 0, left: 75}
+// N.B. these margins are needed because part sof the diagram extend beyond the nodes
+// increase the left or right margins if clade names get longer and are truncated
+const margin = {top: 20, right: 200, bottom: 20, left: 75}
 
 // N.B. should only need to change width/height if you want to change the aspect ratio
 const width = 1000
