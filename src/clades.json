@@ -19,7 +19,7 @@
               "name": "20D (B.1.1.1)",
               "children": [
                 {
-                  "color": "#B3BD4D",
+                  "color": "#A7BE54",
                   "name": "21G (Lambda, C.37)"
                 }
               ]
@@ -29,40 +29,44 @@
               "name": "20F (D.2)"
             },
             {
-              "color": "#4333BE",
+              "color": "#4432BD",
               "name": "20I (Alpha, V1, B.1.1.7)"
             },
             {
-              "color": "#3F4ECB",
+              "color": "#3F4BCA",
               "name": "20J (Gamma, V3, P.1)"
             },
             {
-              "color": "#8BBB6A",
+              "color": "#81BA72",
               "name": "21E (Theta, P.3)"
             },
             {
-              "color": "#E68D36",
+              "color": "#E29E39",
               "name": "21M (Omicron, B.1.1.529)",
               "children": [
                 {
-                  "color": "#D5B03F",
+                  "color": "#CBB742",
                   "name": "21K (Omicron, BA.1)"
                 },
                 {
-                  "color": "#E0A23A",
+                  "color": "#D9AE3E",
                   "name": "21L (Omicron, ~BA.2)",
                   "children": [
                     {
-                      "color": "#E67231",
+                      "color": "#E68935",
                       "name": "22A (Omicron, BA.4)"
                     },
                     {
-                      "color": "#E1502A",
+                      "color": "#E56E30",
                       "name": "22B (Omicron, BA.5)"
                     },
                     {
-                      "color": "#DC2F24",
+                      "color": "#E14F2A",
                       "name": "22C (Omicron, BA.2.12.1)"
+                    },
+                    {
+                      "color": "#DC2F24",
+                      "name": "22D (Omicron, BA.2.75)"
                     }
                   ]
                 }
@@ -83,11 +87,11 @@
               "name": "20H (Beta, V2, B.1.351)"
             },
             {
-              "color": "#68AF92",
+              "color": "#63AC9A",
               "name": "21C (Epsilon, B.1.427/429)"
             },
             {
-              "color": "#9EBE59",
+              "color": "#94BD62",
               "name": "21F (Iota, B.1.526)"
             }
           ]
@@ -97,29 +101,29 @@
           "name": "20E (EU1, B.1.177)"
         },
         {
-          "color": "#4169CF",
+          "color": "#4065CF",
           "name": "21A (Delta, B.1.617.2)",
           "children": [
             {
-              "color": "#4682C9",
+              "color": "#447ECC",
               "name": "21I (Delta)"
             },
             {
-              "color": "#4F96BB",
+              "color": "#4C91BF",
               "name": "21J (Delta)"
             }
           ]
         },
         {
-          "color": "#5AA5A8",
+          "color": "#56A0AE",
           "name": "21B (Kappa, B.1.617.1)"
         },
         {
-          "color": "#78B77D",
+          "color": "#71B486",
           "name": "21D (Eta, B.1.525)"
         },
         {
-          "color": "#C5B945",
+          "color": "#BABC4A",
           "name": "21H (Mu, B.1.621)"
         }
       ]
