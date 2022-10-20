@@ -58,7 +58,13 @@
                     },
                     {
                       "color": "#E56E30",
-                      "name": "22B (Omicron, BA.5)"
+                      "name": "22B (Omicron, BA.5)",
+                      "children":[
+                        {
+                          "color": "#C883D5",
+                          "name": "22E (Omicron, BQ.1)"
+                        }
+                      ]
                     },
                     {
                       "color": "#E14F2A",
