@@ -35,7 +35,7 @@ export function NextstrainCladesSchema({ d3Ref }: { d3Ref: RefObject<SVGSVGEleme
         className="d3-component"
         style={{
           fontFamily: 'sans-serif',
-          fontSize: '1.25rem',
+          fontSize: '1.15rem',
         }}
         viewBox={`0 0 ${width} ${height}`}
         ref={d3Ref}
