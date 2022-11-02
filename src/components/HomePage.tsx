@@ -66,7 +66,7 @@ export function HomePage() {
           <Col>
             <CladeSchemaFigure>
               <CladeSchemaPicture ref={pictureRef}>
-                <NextstrainCladeTreeSvg cladesJson={cladesJson} width={1200} height={800} innerRef={svgRef} />
+                <NextstrainCladeTreeSvg cladesJson={cladesJson} width={1200} height={800} ref={svgRef} />
               </CladeSchemaPicture>
               <CladeSchemaFigcaption>
                 {'Phylogenetic relationships of Nextstrain SARS-CoV-2 clades'}
