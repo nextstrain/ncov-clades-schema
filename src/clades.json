@@ -1,22 +1,18 @@
 {
   "color": "#C8C8C8",
   "name": "19A (B)",
-  "lineages": ["B"],
   "children": [
     {
       "color": "#B8B8B8",
-      "name": "20A",
-      "lineages": ["B.1"],
+      "name": "20A (B.1)",
       "children": [
-        {
+      {
           "color": "#B0B0B0",
-          "name": "20B",
-          "lineages": ["B.1.1"],
+          "name": "20B (B.1.1)",
           "children": [
             {
               "color": "#D3B23F",
-              "name": "21M (Omicron)",
-              "lineages": ["B.1.1.529"],
+              "name": "21M (Omicron, B.1.1.529)",
               "children": [
                 {
                   "color": "#C5B945",
@@ -29,11 +25,10 @@
                     {
                       "color": "#E59638",
                       "name": "22B (Omicron, BA.5)",
-                      "children": [
+                      "children":[
                         {
                           "color": "#DF4628",
-                          "name": "22E (Omicron)",
-                          "lineages": ["BQ.1"]
+                          "name": "22E (Omicron, BQ.1)"
                         }
                       ]
                     },
@@ -141,8 +136,7 @@
     },
     {
       "color": "#C0C0C0",
-      "name": "19B",
-      "lineages": ["A"]
+      "name": "19B (A)"
     }
   ]
 }
