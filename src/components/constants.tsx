@@ -1,0 +1,9 @@
+export const nodeWidth = 100
+export const nodeHeight = 30
+export const horizontalSeparationBetweenNodes = 90
+export const verticalSeparationBetweenNodes = 20
+export const lineagesRectHeight = 12
+export const cladesTextSize = 14
+export const lineagesTextSize = 10
+export const lineagesTextColor = '#444'
+export const cladesTextColor = '#222'
