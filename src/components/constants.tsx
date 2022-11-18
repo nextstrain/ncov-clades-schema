@@ -1,7 +1,6 @@
-export const nodeWidth = 100
-export const nodeHeight = 30
-export const horizontalSeparationBetweenNodes = 90
-export const verticalSeparationBetweenNodes = 20
+export const nodeRadius = 15
+export const horizontalSeparationBetweenNodes = 150
+export const verticalSeparationBetweenNodes = 25
 export const lineagesRectHeight = 12
 export const cladesTextSize = 14
 export const lineagesTextSize = 10

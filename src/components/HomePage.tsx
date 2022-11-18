@@ -6,7 +6,7 @@ import styled, { createGlobalStyle } from 'styled-components'
 import { NextstrainCladeTreeSvg } from 'src/components/NextstrainCladeTreeSvg'
 import { Container, Row, Col } from 'reactstrap'
 
-import cladesJson from '../clades.json'
+import cladesJson from '../clades2.json'
 
 const GlobalStyle = createGlobalStyle`
   html, body, #__next {
@@ -66,7 +66,7 @@ export function HomePage() {
           <Col>
             <CladeSchemaFigure>
               <CladeSchemaPicture ref={pictureRef}>
-                <NextstrainCladeTreeSvg cladesJson={cladesJson} width={1200} height={800} ref={svgRef} />
+                <NextstrainCladeTreeSvg cladesJson={cladesJson} width={1200} height={1000} ref={svgRef} />
               </CladeSchemaPicture>
               <CladeSchemaFigcaption>
                 {'Phylogenetic relationships of Nextstrain SARS-CoV-2 clades'}

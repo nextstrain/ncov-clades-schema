@@ -1,50 +1,27 @@
-import React, { ReactElement, useMemo } from 'react'
-import styled from 'styled-components'
+import React, { ReactElement } from 'react'
+import { GraphNodeDisplay } from 'src/graph/graph'
 
-import { CladesJson } from 'src/components/NextstrainCladeTreeSvg'
-import { cladesTextColor, cladesTextSize, lineagesRectHeight, lineagesTextColor, lineagesTextSize } from './constants'
-
-const Rect = styled.rect`
-  border-radius: 3px;
-`
+import { cladesTextColor, cladesTextSize, nodeRadius } from './constants'
 
 export interface CladeTreeNodeProps {
-  node: CladesJson
-  x: number
-  y: number
-  nodeWidth: number
-  nodeHeight: number
+  node: GraphNodeDisplay
 }
 
-export function Node({ node, x, y, nodeWidth, nodeHeight }: CladeTreeNodeProps): ReactElement {
-  const { name, color, lineages } = node
-  const lineagesText = useMemo(() => node.lineages?.join(', '), [node.lineages])
+export function Node({ node }: CladeTreeNodeProps): ReactElement {
+  const { id, clade, lineages, who, version, otherNames, x, y, color } = node
   return (
     <g>
-      <Rect x={x} y={y} width={nodeWidth} height={nodeHeight} fill={color} rx={3} ry={3}></Rect>
+      <circle cx={x + nodeRadius / 2} cy={y + nodeRadius / 2} r={nodeRadius} fill={color} />
       <text
-        x={x + nodeWidth / 2}
-        y={y + nodeHeight / 2 + cladesTextSize / 2 - 1}
-        width={nodeWidth}
-        height={nodeHeight}
+        x={x + nodeRadius / 2}
+        y={y + nodeRadius / 2 + cladesTextSize / 2 - 1}
+        width={nodeRadius * 2}
+        height={nodeRadius * 2}
         fill={cladesTextColor}
         fontSize={cladesTextSize}
         textAnchor="middle"
       >
-        {name}
-      </text>
-
-      <Rect x={x} y={y + nodeHeight} width={nodeWidth} height={lineagesRectHeight} fill="#ccc"></Rect>
-      <text
-        x={x + nodeWidth / 2}
-        y={y + nodeHeight - lineagesRectHeight + nodeHeight / 2 + cladesTextSize / 2 - 1}
-        width={nodeWidth}
-        height={nodeHeight}
-        fill={lineagesTextColor}
-        fontSize={lineagesTextSize}
-        textAnchor="middle"
-      >
-        {lineagesText}
+        {clade}
       </text>
     </g>
   )

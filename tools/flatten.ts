@@ -1,5 +1,9 @@
-import { omit, sortBy } from 'lodash'
+/* eslint-disable security/detect-unsafe-regex */
+import { sortBy } from 'lodash'
 import fs from 'fs-extra'
+
+import type { GraphEdge, GraphNode } from '../src/graph/graph'
+import { findExactlyOne } from '../src/graph/utils'
 
 main().catch(console.error)
 
@@ -9,37 +13,20 @@ export interface OldNode {
   children?: OldNode[]
 }
 
-export interface GraphNode extends Omit<OldNode, 'children' | 'name'> {
-  id: string
-  clade: string
-  lineages?: string[]
-  who?: string
-  version?: string
-  otherNames?: string[]
-}
-
-export interface GraphEdge {
-  id: string
-  source: string
-  target: string
-}
-
 export async function main() {
-  const cladesJson = await fs.readJSON('src/clades.json')
+  const cladesJson = (await fs.readJSON('src/clades.json')) as OldNode
 
   let nodes: GraphNode[] = []
-  let edges: GraphEdge[] = []
+  const edges: GraphEdge[] = []
   flattenCladeTree(cladesJson, nodes, edges)
   nodes = sortBy(nodes, (node) => node.clade)
 
   verifyGraph(nodes, edges)
 
-  console.log(require('util').inspect({ nodes, edges }, { colors: true, depth: null, maxArrayLength: null }))
-
-  fs.writeJson('src/clades2.json', { nodes, edges }, { spaces: 2 })
+  await fs.writeJson('src/clades2.json', { nodes, edges }, { spaces: 2 })
 }
 
-// Convert tree node hierarhy into flat lists of nodes and edges
+// Convert tree node hierarchy into flat lists of nodes and edges
 function flattenCladeTree(node: OldNode, nodes: GraphNode[], edges: GraphEdge[]) {
   const { clade, lineages, who, version, otherNames } = splitName(node.name)
 
@@ -64,7 +51,7 @@ function flattenCladeTree(node: OldNode, nodes: GraphNode[], edges: GraphEdge[])
 }
 
 function splitName(name: string) {
-  // Extract clade (outside parentheses) and details string (the thing in parenteses)
+  // Extract clade (outside parentheses) and details string (the thing in parentheses)
   const matches = name.match(/^(?<clade>.*?)( \((?<details>[^)]*)\))?$/)
   if (!matches) {
     throw new Error(`Unable to parse name '${name}'`)
@@ -80,7 +67,7 @@ function splitName(name: string) {
     return { clade }
   }
 
-  // Decompose details string (the thing in parenteses),
+  // Decompose details string (the thing in parentheses),
   // for example "(B.1)", "(Omicron, B.1.1.529), "(Beta, V2, B.1.351)", "(EU1)""
   const components = details.split(',').map((component) => component.trim())
   if (components.length === 0) {
@@ -90,7 +77,7 @@ function splitName(name: string) {
   const who = findExactlyOne(components, isWhoVariant)
   const version = findExactlyOne(components, isVersion)
   const lineages = components.filter((c) => isPangoLineage(c))
-  const otherNames = components.filter((c) => c != who && c != version && !lineages.includes(c))
+  const otherNames = components.filter((c) => c !== who && c !== version && !lineages.includes(c))
   return { clade, lineages, who, version, otherNames }
 
   throw new Error(
@@ -99,18 +86,18 @@ function splitName(name: string) {
 }
 
 function isPangoLineage(s: string) {
-  return s.match(/^(\~)?(A|B|C|D|BA|BQ|P|XBB|)(\.\d+?(\/\d+)?)*$/) !== null
+  return s.match(/^(~)?(A|B|C|D|BA|BQ|P|XBB|)(\.\d+?(\/\d+)?)*$/) !== null
 }
 
 function isWhoVariant(s: string) {
-  return !WHO_EXCEPTIONS.includes(s) && GREEK_LETTERS.includes(s)
+  return !WHO_EXCEPTIONS.has(s) && GREEK_LETTERS.has(s)
 }
 
 function isVersion(s: string) {
   return s.match(/^V\d$/) !== null
 }
 
-const GREEK_LETTERS = [
+const GREEK_LETTERS = new Set([
   'Alpha',
   'Beta',
   'Gamma',
@@ -135,29 +122,21 @@ const GREEK_LETTERS = [
   'Chi',
   'Psi',
   'Omega',
-]
+])
 
-const WHO_EXCEPTIONS = ['EU1']
-
-function findExactlyOne(components: string[], predicate: (s: string) => boolean) {
-  const candidates = components.filter(predicate)
-  if (candidates.length > 1) {
-    throw new Error(`Expected to find exactly one element, but found: ${candidates.map((s) => `"${s}"`).join(',')}`)
-  }
-  return candidates[0]
-}
+const WHO_EXCEPTIONS = new Set(['EU1'])
 
 function verifyGraph(nodes: GraphNode[], edges: GraphEdge[]) {
   edges.forEach((edge) => {
-    if (edge.target == edge.source) {
+    if (edge.target === edge.source) {
       throw new Error(`Graph is invalid: invalid edge: the target node '${edge.target}' is the same as source node`)
     }
 
-    if (!nodes.find((node) => edge.target == node.id)) {
+    if (!nodes.some((node) => edge.target === node.id)) {
       throw new Error(`Graph is invalid: invalid edge: the target node '${edge.target}' does not exist`)
     }
 
-    if (!nodes.find((node) => edge.source == node.id)) {
+    if (!nodes.some((node) => edge.source === node.id)) {
       throw new Error(`Graph is invalid: invalid edge: the source node '${edge.source}' does not exist`)
     }
   })
