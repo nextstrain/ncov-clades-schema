@@ -9,8 +9,6 @@ export interface GraphNode {
   version?: string
   otherNames?: string[]
   color?: string
-}
-export interface GraphNodeDisplay extends GraphNode {
   x: number
   y: number
 }
@@ -22,11 +20,11 @@ export interface GraphEdge {
 }
 
 export function calculateGraphLayout(
-  nodes_: GraphNodeDisplay[],
+  nodes_: GraphNode[],
   edges: GraphEdge[],
   width: number,
   height: number,
-): GraphNodeDisplay[] {
+): GraphNode[] {
   const nodes = cloneDeep(nodes_)
 
   // Position roots at the left of viewport

@@ -40,6 +40,8 @@ function flattenCladeTree(node: OldNode, nodes: GraphNode[], edges: GraphEdge[])
     who,
     version,
     otherNames,
+    x: 0,
+    y: 0,
   })
 
   const children = node.children ?? []

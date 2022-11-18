@@ -1,10 +1,10 @@
 import React, { ReactElement } from 'react'
-import { GraphNodeDisplay } from 'src/graph/graph'
+import { GraphNode } from 'src/graph/graph'
 
 import { cladesTextColor, cladesTextSize, nodeRadius } from './constants'
 
 export interface CladeTreeNodeProps {
-  node: GraphNodeDisplay
+  node: GraphNode
 }
 
 export function Node({ node }: CladeTreeNodeProps): ReactElement {

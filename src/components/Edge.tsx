@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react'
 
-import { getNodesForEdge, GraphEdge, GraphNodeDisplay } from '../graph/graph'
+import { getNodesForEdge, GraphEdge, GraphNode } from '../graph/graph'
 import { nodeRadius } from './constants'
 
 export interface EdgeProps {
-  nodes: GraphNodeDisplay[]
+  nodes: GraphNode[]
   edge: GraphEdge
 }
 
