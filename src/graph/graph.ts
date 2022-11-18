@@ -50,27 +50,23 @@ export function calculateGraphLayout(graph_: Graph, width: number, height: numbe
   })
 
   // Spread parents in the vertical space defined by their children
-  traverseBreadthFirst(
-    graph,
-    ({ node, children, parents, siblings, isLeaf, isRoot, depth }) => {
-      const siblingYs = siblings.map((sibling) => sibling.y)
+  traverseBreadthFirstBackwards(graph, ({ node, children, parents, siblings, isLeaf, isRoot, depth }) => {
+    const siblingYs = siblings.map((sibling) => sibling.y)
 
-      // calculate total y-space available to put parents into
-      const start = min(siblingYs) ?? 0
-      const end = max(siblingYs) ?? 0
+    // calculate total y-space available to put parents into
+    const start = min(siblingYs) ?? 0
+    const end = max(siblingYs) ?? 0
 
-      // calculate y-spacing between parents
-      const spacing = (end - start) / (parents.length + 1)
+    // calculate y-spacing between parents
+    const spacing = (end - start) / (parents.length + 1)
 
-      // spread parents in the available y-space
-      parents.forEach(([parent, _], i) => {
-        parent.y = start + spacing * (i + 1)
-      })
+    // spread parents in the available y-space
+    parents.forEach(([parent, _], i) => {
+      parent.y = start + spacing * (i + 1)
+    })
 
-      return node
-    },
-    { backward: true },
-  )
+    return node
+  })
 
   console.log(require('util').inspect(graph.nodes, { colors: true, depth: null, maxArrayLength: null }))
 
@@ -144,6 +140,15 @@ export function traverseBreadthFirst<T>(
   }
 
   return results
+}
+
+// Explore graph in breadth-first fashion, backwards
+export function traverseBreadthFirstBackwards<T>(
+  graph: Graph,
+  explorer: (params: ExplorerParams) => T,
+  options?: { backward?: boolean },
+): T[] {
+  return traverseBreadthFirst(graph, explorer, { ...options, backward: true })
 }
 
 export function getNodesForEdge(graph: Graph, edge: GraphEdge) {
