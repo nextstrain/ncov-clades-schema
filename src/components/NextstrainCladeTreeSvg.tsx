@@ -32,15 +32,11 @@ export const NextstrainCladeTreeSvg = forwardRef<SVGSVGElement, CladeTreeSvgProp
         return { nodeComponents: [], edgeComponents: [] }
       }
 
-      const nodes = calculateGraphLayout(
-        cladesJson.nodes.map((node) => ({ ...node, x: 0, y: 0 })),
-        cladesJson.edges,
-        width,
-        height,
-      )
+      let graph = { nodes: cladesJson.nodes, edges: cladesJson.edges }
+      graph = calculateGraphLayout(graph, width, height)
 
-      const nodeComponents = nodes.map((node) => <Node key={node.id} node={node} />)
-      const edgeComponents = cladesJson.edges.map((edge) => <Edge key={edge.id} nodes={nodes} edge={edge} />)
+      const nodeComponents = graph.nodes.map((node) => <Node key={node.id} graph={graph} node={node} />)
+      const edgeComponents = graph.edges.map((edge) => <Edge key={edge.id} graph={graph} edge={edge} />)
 
       return { nodeComponents, edgeComponents }
     }, [cladesJson.edges, cladesJson.nodes, height, width])
