@@ -1,12 +1,17 @@
-import { max, min, cloneDeep } from 'lodash'
+import { max, min, cloneDeep, sumBy, meanBy, last, first, minBy } from 'lodash'
 import { horizontalSeparationBetweenNodes, nodeRadius } from '../components/constants'
+
+export interface GraphRaw {
+  nodes: GraphNodeRaw[]
+  edges: GraphEdge[]
+}
 
 export interface Graph {
   nodes: GraphNode[]
   edges: GraphEdge[]
 }
 
-export interface GraphNode {
+export interface GraphNodeRaw {
   id: string
   clade: string
   lineages?: string[]
@@ -14,8 +19,45 @@ export interface GraphNode {
   version?: string
   otherNames?: string[]
   color?: string
+}
+
+export interface GraphNode extends GraphNodeRaw {
   x: number
   y: number
+  layout: {
+    numLeaves: number
+    meanDepth: number
+    minDepth: number
+    maxDepth: number
+    meanRank: number
+    minRank: number
+    maxRank: number
+    yTBarStart: number
+    xTBarStart: number
+    yTBarEnd: number
+    xTBarEnd: number
+  }
+}
+
+export function convertNodeToInternal(nodeRaw: GraphNodeRaw): GraphNode {
+  return {
+    ...nodeRaw,
+    x: 0,
+    y: 0,
+    layout: {
+      numLeaves: 0,
+      meanDepth: 0,
+      minDepth: 0,
+      maxDepth: 0,
+      meanRank: 0,
+      minRank: 0,
+      maxRank: 0,
+      yTBarStart: 0,
+      xTBarStart: 0,
+      yTBarEnd: 0,
+      xTBarEnd: 0,
+    },
+  }
 }
 
 export interface GraphEdge {
@@ -24,48 +66,48 @@ export interface GraphEdge {
   target: string
 }
 
-export function calculateGraphLayout(graph_: Graph, width: number, height: number): Graph {
-  const graph = cloneDeep(graph_)
+export function calculateGraphLayout(graphRaw: GraphRaw, width: number, height: number): Graph {
+  const graph: Graph = { ...cloneDeep(graphRaw), nodes: graphRaw.nodes.map(convertNodeToInternal) }
 
-  // Position roots at the left of viewport
-  const roots = getRoots(graph)
-  roots.forEach((root) => {
-    root.x = nodeRadius / 2
-  })
-
-  traverseBreadthFirst(graph, ({ node, children, parents, siblings, isLeaf, isRoot, depth }) => {
-    children.forEach(([child, _]) => {
-      // Spread nodes across horizontal axis
-      // TODO: calculate separation dynamically from viewport width
-      child.x = node.x + nodeRadius / 2 + horizontalSeparationBetweenNodes
-    })
+  let rank = 0
+  traverseDepthFirstPostOrder(graph, ({ node, children, parents, siblings, isLeaf, isRoot }) => {
+    if (isLeaf) {
+      node.layout.numLeaves = 1
+      rank += 1
+      node.layout.meanRank = rank
+      node.layout.minRank = rank
+      node.layout.maxRank = rank
+    } else {
+      node.layout.numLeaves = sumBy(children, ([child, _]) => child.layout.numLeaves)
+      node.layout.meanRank = meanBy(children, ([child, _]) => child.layout.meanRank)
+      node.layout.minRank = min(children.map(([child, _]) => child.layout.meanRank)) ?? 0
+      node.layout.maxRank = max(children.map(([child, _]) => child.layout.meanRank)) ?? 0
+    }
     return node
   })
 
-  // Spread leaves along vertical axis
-  const leaves = getLeaves(graph)
-  const leafSpacing = height / (leaves.length - 1)
-  leaves.forEach((leaf, i) => {
-    leaf.y = i * (leafSpacing - nodeRadius)
+  traverseDepthFirstPreOrder(graph, ({ node, children, parents, siblings, isLeaf, isRoot }) => {
+    if (isRoot) {
+      node.layout.meanDepth = 0
+      node.layout.maxDepth = 0
+      node.layout.minDepth = 0
+    } else {
+      node.layout.meanDepth = meanBy(parents, ([parent]) => parent.layout.meanDepth) + 1
+      node.layout.minDepth = (min(parents.map(([parent, _]) => parent.layout.meanDepth)) ?? 0) + 1
+      node.layout.maxDepth = (max(parents.map(([parent, _]) => parent.layout.meanDepth)) ?? 0) + 1
+    }
+    return node
   })
 
-  // Spread parents in the vertical space defined by their children
-  traverseBreadthFirstBackwards(graph, ({ node, children, parents, siblings, isLeaf, isRoot, depth }) => {
-    const siblingYs = siblings.map((sibling) => sibling.y)
-
-    // calculate total y-space available to put parents into
-    const start = min(siblingYs) ?? 0
-    const end = max(siblingYs) ?? 0
-
-    // calculate y-spacing between parents
-    const spacing = (end - start) / (parents.length + 1)
-
-    // spread parents in the available y-space
-    parents.forEach(([parent, _], i) => {
-      parent.y = start + spacing * (i + 1)
-    })
-
-    return node
+  traverseDepthFirstPreOrder(graph, ({ node, children, parents, siblings, isLeaf, isRoot }) => {
+    node.y = node.layout.meanRank * 40
+    node.x = node.layout.meanDepth * 100
+    if (!isLeaf) {
+      node.layout.yTBarStart = node.layout.minRank
+      node.layout.xTBarStart = node.layout.meanDepth
+      node.layout.yTBarEnd = node.layout.maxRank
+      node.layout.xTBarEnd = node.layout.meanDepth
+    }
   })
 
   console.log(require('util').inspect(graph.nodes, { colors: true, depth: null, maxArrayLength: null }))
@@ -80,7 +122,6 @@ export interface ExplorerParams {
   siblings: GraphNode[]
   isLeaf: boolean
   isRoot: boolean
-  depth: number
 }
 
 // Explore graph in breadth-first fashion given an explorer function.
@@ -124,7 +165,7 @@ export function traverseBreadthFirst<T>(
     const isRoot = parents.length === 0
 
     // Perform the exploration as defined by the caller function
-    const result = explorer({ node, children, parents, siblings, isLeaf, isRoot, depth })
+    const result = explorer({ node, children, parents, siblings, isLeaf, isRoot })
     explored.add(node.id)
     results.push(result)
 
@@ -142,6 +183,11 @@ export function traverseBreadthFirst<T>(
   return results
 }
 
+export enum DepthFirstTraversalOrder {
+  Pre,
+  Post,
+}
+
 // Explore graph in breadth-first fashion, backwards
 export function traverseBreadthFirstBackwards<T>(
   graph: Graph,
@@ -149,6 +195,57 @@ export function traverseBreadthFirstBackwards<T>(
   options?: { backward?: boolean },
 ): T[] {
   return traverseBreadthFirst(graph, explorer, { ...options, backward: true })
+}
+
+// Explore graph in depth-first pre-order fashion
+export function traverseDepthFirstPreOrder<T>(graph: Graph, explorer: (params: ExplorerParams) => T) {
+  const results: T[] = []
+  const explored = new Set<string>()
+  return getRoots(graph).forEach((node) => {
+    traverseDepthFirstRecursively(graph, node, explorer, results, explored, DepthFirstTraversalOrder.Pre)
+  })
+  return results
+}
+
+// Explore graph in depth-first post-order fashion
+export function traverseDepthFirstPostOrder<T>(graph: Graph, explorer: (params: ExplorerParams) => T) {
+  const results: T[] = []
+  const explored = new Set<string>()
+  return getRoots(graph).forEach((node) => {
+    traverseDepthFirstRecursively(graph, node, explorer, results, explored, DepthFirstTraversalOrder.Post)
+  })
+  return results
+}
+
+// Implements graph traversal in depth-first pre-order or post-order fashion. Recursive implementation.
+function traverseDepthFirstRecursively<T>(
+  graph: Graph,
+  node: GraphNode,
+  explorer: (params: ExplorerParams) => T,
+  results: T[],
+  explored: Set<string>,
+  order: DepthFirstTraversalOrder,
+) {
+  const parents: [GraphNode, GraphEdge][] = getParents(graph, node.id)
+  const children: [GraphNode, GraphEdge][] = getChildren(graph, node.id)
+  const siblings: GraphNode[] = getSiblings(graph, node.id)
+  const isLeaf = children.length === 0 // Leaf is the node that has no children
+  const isRoot = parents.length === 0 // Root is the node that has no parents
+
+  // Explore current node if pre-order
+  if (order === DepthFirstTraversalOrder.Pre) {
+    explored.add(node.id)
+    results.push(explorer({ node, children, parents, siblings, isLeaf, isRoot }))
+  }
+
+  // Explore child nodes recursively
+  children.forEach(([child]) => traverseDepthFirstRecursively(graph, child, explorer, results, explored, order))
+
+  // Explore current node if post-order
+  if (order === DepthFirstTraversalOrder.Post) {
+    explored.add(node.id)
+    results.push(explorer({ node, children, parents, siblings, isLeaf, isRoot }))
+  }
 }
 
 export function getNodesForEdge(graph: Graph, edge: GraphEdge) {

@@ -2,7 +2,7 @@
 import { sortBy } from 'lodash'
 import fs from 'fs-extra'
 
-import type { GraphEdge, GraphNode } from '../src/graph/graph'
+import type { GraphEdge, GraphNodeRaw } from '../src/graph/graph'
 import { findExactlyOne } from '../src/graph/utils'
 
 main().catch(console.error)
@@ -16,7 +16,7 @@ export interface OldNode {
 export async function main() {
   const cladesJson = (await fs.readJSON('src/clades.json')) as OldNode
 
-  let nodes: GraphNode[] = []
+  let nodes: GraphNodeRaw[] = []
   const edges: GraphEdge[] = []
   flattenCladeTree(cladesJson, nodes, edges)
   nodes = sortBy(nodes, (node) => node.clade)
@@ -27,7 +27,7 @@ export async function main() {
 }
 
 // Convert tree node hierarchy into flat lists of nodes and edges
-function flattenCladeTree(node: OldNode, nodes: GraphNode[], edges: GraphEdge[]) {
+function flattenCladeTree(node: OldNode, nodes: GraphNodeRaw[], edges: GraphEdge[]) {
   const { clade, lineages, who, version, otherNames } = splitName(node.name)
 
   const id = node.name
@@ -40,8 +40,6 @@ function flattenCladeTree(node: OldNode, nodes: GraphNode[], edges: GraphEdge[])
     who,
     version,
     otherNames,
-    x: 0,
-    y: 0,
   })
 
   const children = node.children ?? []
@@ -128,7 +126,7 @@ const GREEK_LETTERS = new Set([
 
 const WHO_EXCEPTIONS = new Set(['EU1'])
 
-function verifyGraph(nodes: GraphNode[], edges: GraphEdge[]) {
+function verifyGraph(nodes: GraphNodeRaw[], edges: GraphEdge[]) {
   edges.forEach((edge) => {
     if (edge.target === edge.source) {
       throw new Error(`Graph is invalid: invalid edge: the target node '${edge.target}' is the same as source node`)
