@@ -1,5 +1,5 @@
 import React, { forwardRef, useMemo } from 'react'
-import { calculateGraphLayout, GraphEdge, GraphNode } from 'src/graph/graph'
+import { calculateGraphLayout, GraphEdge, GraphNodeRaw } from 'src/graph/graph'
 import styled from 'styled-components'
 
 import { Edge } from 'src/components/Edge'
@@ -14,7 +14,7 @@ const Svg = styled.svg`
 `
 
 export interface CladesJson {
-  nodes: GraphNode[]
+  nodes: GraphNodeRaw[]
   edges: GraphEdge[]
 }
 
@@ -32,8 +32,7 @@ export const NextstrainCladeTreeSvg = forwardRef<SVGSVGElement, CladeTreeSvgProp
         return { nodeComponents: [], edgeComponents: [] }
       }
 
-      let graph = { nodes: cladesJson.nodes, edges: cladesJson.edges }
-      graph = calculateGraphLayout(graph, width, height)
+      const graph = calculateGraphLayout({ nodes: cladesJson.nodes, edges: cladesJson.edges }, width, height)
 
       const nodeComponents = graph.nodes.map((node) => <Node key={node.id} graph={graph} node={node} />)
       const edgeComponents = graph.edges.map((edge) => <Edge key={edge.id} graph={graph} edge={edge} />)

@@ -1,5 +1,4 @@
-import { max, min, cloneDeep, sumBy, meanBy, last, first, minBy } from 'lodash'
-import { horizontalSeparationBetweenNodes, nodeRadius } from '../components/constants'
+import { max, min, cloneDeep, sumBy, meanBy } from 'lodash'
 
 export interface GraphRaw {
   nodes: GraphNodeRaw[]

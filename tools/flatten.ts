@@ -81,7 +81,7 @@ function splitName(name: string) {
   return { clade, lineages, who, version, otherNames }
 
   throw new Error(
-    `Unable to make sense of the name '${name}': details string does not follow any known format: '${details}'`,
+    `Unable to make sense of the name '${name}': details string does not follow any known format: '${details ?? ''}'`,
   )
 }
 
