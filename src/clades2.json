@@ -1,0 +1,454 @@
+{
+  "nodes": [
+    {
+      "id": "19A (B)",
+      "color": "#C8C8C8",
+      "clade": "19A",
+      "lineages": [
+        "B"
+      ],
+      "otherNames": []
+    },
+    {
+      "id": "19B (A)",
+      "color": "#C0C0C0",
+      "clade": "19B",
+      "lineages": [
+        "A"
+      ],
+      "otherNames": []
+    },
+    {
+      "id": "20A (B.1)",
+      "color": "#B8B8B8",
+      "clade": "20A",
+      "lineages": [
+        "B.1"
+      ],
+      "otherNames": []
+    },
+    {
+      "id": "20B (B.1.1)",
+      "color": "#B0B0B0",
+      "clade": "20B",
+      "lineages": [
+        "B.1.1"
+      ],
+      "otherNames": []
+    },
+    {
+      "id": "20C",
+      "color": "#A8A8A8",
+      "clade": "20C"
+    },
+    {
+      "id": "20D (B.1.1.1)",
+      "color": "#A0A0A0",
+      "clade": "20D",
+      "lineages": [
+        "B.1.1.1"
+      ],
+      "otherNames": []
+    },
+    {
+      "id": "20E (EU1, B.1.177)",
+      "color": "#989898",
+      "clade": "20E",
+      "lineages": [
+        "B.1.177"
+      ],
+      "otherNames": [
+        "EU1"
+      ]
+    },
+    {
+      "id": "20F (D.2)",
+      "color": "#909090",
+      "clade": "20F",
+      "lineages": [
+        "D.2"
+      ],
+      "otherNames": []
+    },
+    {
+      "id": "20G (B.1.2)",
+      "color": "#888888",
+      "clade": "20G",
+      "lineages": [
+        "B.1.2"
+      ],
+      "otherNames": []
+    },
+    {
+      "id": "20H (Beta, V2, B.1.351)",
+      "color": "#5E1D9D",
+      "clade": "20H",
+      "lineages": [
+        "B.1.351"
+      ],
+      "who": "Beta",
+      "version": "V2",
+      "otherNames": []
+    },
+    {
+      "id": "20I (Alpha, V1, B.1.1.7)",
+      "color": "#4A28B3",
+      "clade": "20I",
+      "lineages": [
+        "B.1.1.7"
+      ],
+      "who": "Alpha",
+      "version": "V1",
+      "otherNames": []
+    },
+    {
+      "id": "20J (Gamma, V3, P.1)",
+      "color": "#403DC5",
+      "clade": "20J",
+      "lineages": [
+        "P.1"
+      ],
+      "who": "Gamma",
+      "version": "V3",
+      "otherNames": []
+    },
+    {
+      "id": "21A (Delta, B.1.617.2)",
+      "color": "#3F56CE",
+      "clade": "21A",
+      "lineages": [
+        "B.1.617.2"
+      ],
+      "who": "Delta",
+      "otherNames": []
+    },
+    {
+      "id": "21B (Kappa, B.1.617.1)",
+      "color": "#4E95BD",
+      "clade": "21B",
+      "lineages": [
+        "B.1.617.1"
+      ],
+      "who": "Kappa",
+      "otherNames": []
+    },
+    {
+      "id": "21C (Epsilon, B.1.427/429)",
+      "color": "#58A2AC",
+      "clade": "21C",
+      "lineages": [
+        "B.1.427/429"
+      ],
+      "who": "Epsilon",
+      "otherNames": []
+    },
+    {
+      "id": "21D (Eta, B.1.525)",
+      "color": "#64AC99",
+      "clade": "21D",
+      "lineages": [
+        "B.1.525"
+      ],
+      "who": "Eta",
+      "otherNames": []
+    },
+    {
+      "id": "21E (Theta, P.3)",
+      "color": "#71B486",
+      "clade": "21E",
+      "lineages": [
+        "P.3"
+      ],
+      "who": "Theta",
+      "otherNames": []
+    },
+    {
+      "id": "21F (Iota, B.1.526)",
+      "color": "#80B973",
+      "clade": "21F",
+      "lineages": [
+        "B.1.526"
+      ],
+      "who": "Iota",
+      "otherNames": []
+    },
+    {
+      "id": "21G (Lambda, C.37)",
+      "color": "#91BC64",
+      "clade": "21G",
+      "lineages": [
+        "C.37"
+      ],
+      "who": "Lambda",
+      "otherNames": []
+    },
+    {
+      "id": "21H (Mu, B.1.621)",
+      "color": "#A3BE57",
+      "clade": "21H",
+      "lineages": [
+        "B.1.621"
+      ],
+      "who": "Mu",
+      "otherNames": []
+    },
+    {
+      "id": "21I (Delta)",
+      "color": "#416DCE",
+      "clade": "21I",
+      "lineages": [],
+      "who": "Delta",
+      "otherNames": []
+    },
+    {
+      "id": "21J (Delta)",
+      "color": "#4683C8",
+      "clade": "21J",
+      "lineages": [],
+      "who": "Delta",
+      "otherNames": []
+    },
+    {
+      "id": "21K (Omicron, BA.1)",
+      "color": "#B5BD4C",
+      "clade": "21K",
+      "lineages": [
+        "BA.1"
+      ],
+      "who": "Omicron",
+      "otherNames": []
+    },
+    {
+      "id": "21L (Omicron, ~BA.2)",
+      "color": "#C5B945",
+      "clade": "21L",
+      "lineages": [
+        "~BA.2"
+      ],
+      "who": "Omicron",
+      "otherNames": []
+    },
+    {
+      "id": "21M (Omicron, B.1.1.529)",
+      "color": "#D3B23F",
+      "clade": "21M",
+      "lineages": [
+        "B.1.1.529"
+      ],
+      "who": "Omicron",
+      "otherNames": []
+    },
+    {
+      "id": "22A (Omicron, BA.4)",
+      "color": "#DEA63B",
+      "clade": "22A",
+      "lineages": [
+        "BA.4"
+      ],
+      "who": "Omicron",
+      "otherNames": []
+    },
+    {
+      "id": "22B (Omicron, BA.5)",
+      "color": "#E59638",
+      "clade": "22B",
+      "lineages": [
+        "BA.5"
+      ],
+      "who": "Omicron",
+      "otherNames": []
+    },
+    {
+      "id": "22C (Omicron, BA.2.12.1)",
+      "color": "#E67F33",
+      "clade": "22C",
+      "lineages": [
+        "BA.2.12.1"
+      ],
+      "who": "Omicron",
+      "otherNames": []
+    },
+    {
+      "id": "22D (Omicron, BA.2.75)",
+      "color": "#E4642E",
+      "clade": "22D",
+      "lineages": [
+        "BA.2.75"
+      ],
+      "who": "Omicron",
+      "otherNames": []
+    },
+    {
+      "id": "22E (Omicron, BQ.1)",
+      "color": "#DF4628",
+      "clade": "22E",
+      "lineages": [
+        "BQ.1"
+      ],
+      "who": "Omicron",
+      "otherNames": []
+    },
+    {
+      "id": "22F (Omicron, XBB)",
+      "color": "#DB2823",
+      "clade": "22F",
+      "lineages": [
+        "XBB"
+      ],
+      "who": "Omicron",
+      "otherNames": []
+    }
+  ],
+  "edges": [
+    {
+      "id": "0",
+      "source": "19A (B)",
+      "target": "20A (B.1)"
+    },
+    {
+      "id": "1",
+      "source": "20A (B.1)",
+      "target": "20B (B.1.1)"
+    },
+    {
+      "id": "2",
+      "source": "20B (B.1.1)",
+      "target": "21M (Omicron, B.1.1.529)"
+    },
+    {
+      "id": "3",
+      "source": "21M (Omicron, B.1.1.529)",
+      "target": "21L (Omicron, ~BA.2)"
+    },
+    {
+      "id": "4",
+      "source": "21L (Omicron, ~BA.2)",
+      "target": "22A (Omicron, BA.4)"
+    },
+    {
+      "id": "5",
+      "source": "21L (Omicron, ~BA.2)",
+      "target": "22B (Omicron, BA.5)"
+    },
+    {
+      "id": "6",
+      "source": "22B (Omicron, BA.5)",
+      "target": "22E (Omicron, BQ.1)"
+    },
+    {
+      "id": "7",
+      "source": "21L (Omicron, ~BA.2)",
+      "target": "22C (Omicron, BA.2.12.1)"
+    },
+    {
+      "id": "8",
+      "source": "21L (Omicron, ~BA.2)",
+      "target": "22D (Omicron, BA.2.75)"
+    },
+    {
+      "id": "9",
+      "source": "21L (Omicron, ~BA.2)",
+      "target": "22F (Omicron, XBB)"
+    },
+    {
+      "id": "10",
+      "source": "21M (Omicron, B.1.1.529)",
+      "target": "21K (Omicron, BA.1)"
+    },
+    {
+      "id": "11",
+      "source": "20B (B.1.1)",
+      "target": "21E (Theta, P.3)"
+    },
+    {
+      "id": "12",
+      "source": "20B (B.1.1)",
+      "target": "20J (Gamma, V3, P.1)"
+    },
+    {
+      "id": "13",
+      "source": "20B (B.1.1)",
+      "target": "20I (Alpha, V1, B.1.1.7)"
+    },
+    {
+      "id": "14",
+      "source": "20B (B.1.1)",
+      "target": "20F (D.2)"
+    },
+    {
+      "id": "15",
+      "source": "20B (B.1.1)",
+      "target": "20D (B.1.1.1)"
+    },
+    {
+      "id": "16",
+      "source": "20D (B.1.1.1)",
+      "target": "21G (Lambda, C.37)"
+    },
+    {
+      "id": "17",
+      "source": "20A (B.1)",
+      "target": "21A (Delta, B.1.617.2)"
+    },
+    {
+      "id": "18",
+      "source": "21A (Delta, B.1.617.2)",
+      "target": "21I (Delta)"
+    },
+    {
+      "id": "19",
+      "source": "21A (Delta, B.1.617.2)",
+      "target": "21J (Delta)"
+    },
+    {
+      "id": "20",
+      "source": "20A (B.1)",
+      "target": "20C"
+    },
+    {
+      "id": "21",
+      "source": "20C",
+      "target": "21F (Iota, B.1.526)"
+    },
+    {
+      "id": "22",
+      "source": "20C",
+      "target": "21C (Epsilon, B.1.427/429)"
+    },
+    {
+      "id": "23",
+      "source": "20C",
+      "target": "20H (Beta, V2, B.1.351)"
+    },
+    {
+      "id": "24",
+      "source": "20C",
+      "target": "20G (B.1.2)"
+    },
+    {
+      "id": "25",
+      "source": "20A (B.1)",
+      "target": "21H (Mu, B.1.621)"
+    },
+    {
+      "id": "26",
+      "source": "20A (B.1)",
+      "target": "21D (Eta, B.1.525)"
+    },
+    {
+      "id": "27",
+      "source": "20A (B.1)",
+      "target": "21B (Kappa, B.1.617.1)"
+    },
+    {
+      "id": "28",
+      "source": "20A (B.1)",
+      "target": "20E (EU1, B.1.177)"
+    },
+    {
+      "id": "29",
+      "source": "19A (B)",
+      "target": "19B (A)"
+    }
+  ]
+}

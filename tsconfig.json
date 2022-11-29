@@ -1,4 +1,12 @@
 {
+  "ts-node": {
+    "extends": "ts-node/node16/tsconfig.json",
+    "transpileOnly": true,
+    "files": true,
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  },
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
@@ -18,7 +26,8 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "ES5"
+    "target": "ES5",
+    "tsBuildInfoFile": ".cache/.tsbuildinfo"
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.json"],
   "exclude": ["node_modules", ".eslintrc.js"]
