@@ -1,7 +1,30 @@
 import React, { useMemo } from 'react'
+import styled from 'styled-components'
 
 import { getNodesForEdge, Graph, GraphEdge } from '../graph/graph'
 import { nodeRadius } from './constants'
+
+const PathT = styled.path`
+  fill: none;
+  stroke-width: 2px;
+  stroke: #555555;
+  pointer-events: auto;
+  cursor: pointer;
+`
+
+const PathS = styled.path`
+  fill: none;
+  stroke-width: 2px;
+  stroke: #555555;
+  pointer-events: auto;
+  cursor: pointer;
+  stroke-linecap: round;
+`
+
+export interface Point {
+  x: number
+  y: number
+}
 
 export interface EdgeProps {
   edge: GraphEdge
@@ -9,14 +32,22 @@ export interface EdgeProps {
 }
 
 export function Edge({ edge, graph }: EdgeProps) {
-  const { x1, x2, y1, y2 } = useMemo(() => {
+  const pathComponents = useMemo(() => {
     const { source, target } = getNodesForEdge(graph, edge)
-    const y1 = source.y + nodeRadius / 2
-    const y2 = target.y + nodeRadius / 2
-    const x1 = source.x + nodeRadius / 2
-    const x2 = target.x + nodeRadius / 2
-    return { x1, x2, y1, y2 }
+
+    const vertical = (
+      <PathT
+        key="vertical"
+        d={`M ${source.layout.xTBarStart}, ${source.layout.yTBarStart} L ${source.layout.xTBarEnd}, ${source.layout.yTBarEnd}`}
+      />
+    )
+
+    const horizontal = (
+      <PathS key="horizontal" d={`M ${source.layout.xTBarStart}, ${target.y} L ${target.x}, ${target.y}`} />
+    )
+
+    return [vertical, horizontal]
   }, [edge, graph])
 
-  return <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="#222" />
+  return <g>{pathComponents}</g>
 }

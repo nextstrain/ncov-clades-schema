@@ -1,4 +1,5 @@
 import { max, min, cloneDeep, sumBy, meanBy } from 'lodash'
+import { horizontalSeparationBetweenNodes, nodeRadius, verticalSeparationBetweenNodes } from 'src/components/constants'
 
 export interface GraphRaw {
   nodes: GraphNodeRaw[]
@@ -99,13 +100,13 @@ export function calculateGraphLayout(graphRaw: GraphRaw, width: number, height: 
   })
 
   traverseDepthFirstPreOrder(graph, ({ node, children, parents, siblings, isLeaf, isRoot }) => {
-    node.y = node.layout.meanRank * 40
-    node.x = node.layout.meanDepth * 100
+    node.x = node.layout.meanDepth * horizontalSeparationBetweenNodes + nodeRadius
+    node.y = node.layout.meanRank * verticalSeparationBetweenNodes + nodeRadius
     if (!isLeaf) {
-      node.layout.yTBarStart = node.layout.minRank
-      node.layout.xTBarStart = node.layout.meanDepth
-      node.layout.yTBarEnd = node.layout.maxRank
-      node.layout.xTBarEnd = node.layout.meanDepth
+      node.layout.xTBarStart = node.layout.meanDepth * horizontalSeparationBetweenNodes + nodeRadius
+      node.layout.yTBarStart = node.layout.minRank * verticalSeparationBetweenNodes + nodeRadius
+      node.layout.xTBarEnd = node.layout.meanDepth * horizontalSeparationBetweenNodes + nodeRadius
+      node.layout.yTBarEnd = node.layout.maxRank * verticalSeparationBetweenNodes + nodeRadius
     }
   })
 

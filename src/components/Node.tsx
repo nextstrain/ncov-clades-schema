@@ -12,10 +12,10 @@ export function Node({ node, graph }: CladeTreeNodeProps): ReactElement {
   const { id, clade, lineages, who, version, otherNames, x, y, color } = node
   return (
     <g>
-      <circle cx={x + nodeRadius / 2} cy={y + nodeRadius / 2} r={nodeRadius} fill={color} />
+      <circle cx={x} cy={y} r={nodeRadius} fill={color} />
       <text
-        x={x + nodeRadius / 2}
-        y={y + nodeRadius / 2 + cladesTextSize / 2 - 1}
+        x={x}
+        y={y + cladesTextSize / 2 - 1}
         width={nodeRadius * 2}
         height={nodeRadius * 2}
         fill={cladesTextColor}
