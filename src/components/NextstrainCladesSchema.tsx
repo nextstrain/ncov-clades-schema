@@ -16,8 +16,8 @@ export interface CladesJson {
 export function NextstrainCladesSchema({ d3Ref }: { d3Ref: RefObject<SVGSVGElement> }) {
   const margin = { top: 0, right: 100, bottom: 0, left: 120 }
 
-  const width = 2050 // Change this when the tree grows
-  const height = 1250 // Change this when the tree grows
+  const width = 2200 // Change this when the tree grows
+  const height = 1450 // Change this when the tree grows
 
   const options = { margin, width, height }
 
@@ -35,7 +35,7 @@ export function NextstrainCladesSchema({ d3Ref }: { d3Ref: RefObject<SVGSVGEleme
         className="d3-component"
         style={{
           fontFamily: 'sans-serif',
-          fontSize: '1.2rem',
+          fontSize: '1.3rem',
         }}
         viewBox={`0 0 ${width} ${height}`}
         ref={d3Ref}

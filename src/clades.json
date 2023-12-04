@@ -11,87 +11,103 @@
           "name": "20B (B.1.1)",
           "children": [
             {
-              "color": "#9DBE5A",
+              "color": "#89BB6B",
               "name": "21M (Omicron, B.1.1.529)",
               "children": [
                 {
-                  "color": "#82BA71",
+                  "color": "#72B584",
                   "name": "21K (Omicron, BA.1)"
                 },
                 {
-                  "color": "#8FBC65",
+                  "color": "#7DB877",
                   "name": "21L (Omicron, BA.2)",
                   "children": [
                     {
-                      "color": "#E1A13A",
-                      "name": "22F (Omicron, XBB)",
-                      "children": [
-                        {
-                          "color": "#E69437",
-                          "name": "23A (Omicron, XBB.1.5)"
-                        },
-                        {
-                          "color": "#E68134",
-                          "name": "23B (Omicron, XBB.1.16)"
-                        },
-                        {
-                          "color": "#E2562B",
-                          "name": "23D (Omicron, XBB.1.9)",
-                          "children": [
-                            {
-                              "color": "#DB2823",
-                              "name": "23F (Omicron, EG.5.1)"
-                            }
-                          ]
-                        },
-                        {
-                          "color": "#DE3F27",
-                          "name": "23E (Omicron, XBB.2.3)"
-                        }
-                      ]
+                      "color": "#DB2823",
+                      "name": "22I (BA.2.86)"
                     },
                     {
-                      "color": "#D1B440",
-                      "name": "22D (Omicron, BA.2.75)",
+                      "color": "#BABC4A",
+                      "name": "22D (BA.2.75)",
                       "children": [
                         {
-                          "color": "#E56E30",
-                          "name": "23C (Omicron, CH.1.1)"
+                          "color": "#E49938",
+                          "name": "23C (CH.1.1)"
                       }
                       ]
                     },
                     {
-                      "color": "#C5B945",
-                      "name": "22C (Omicron, BA.2.12.1)"
-                    },
-                    {
-                      "color": "#B9BC4A",
-                      "name": "22B (Omicron, BA.5)",
+                      "color": "#D0B441",
+                      "name": "22F (XBB)",
                       "children": [
                         {
-                          "color": "#DAAC3D",
-                          "name": "22E (Omicron, BQ.1)"
+                          "color": "#D8AE3E",
+                          "name": "23A (XBB.1.5)",
+                          "children": [
+                            {
+                              "color": "#DB2823",
+                              "name": "23G (XBB.1.5.70)"
+                            }
+                          ]
+                        },
+                        {
+                          "color": "#DFA43B",
+                          "name": "23B (XBB.1.16)"
+                        },
+                        {
+                          "color": "#E68B35",
+                          "name": "23D (XBB.1.9)",
+                          "children": [
+                            {
+                              "color": "#E4672E",
+                              "name": "23F (EG.5.1)",
+                              "children": [
+                                {
+                                  "color": "#DE3D27",
+                                  "name": "23H (HK.3)"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "color": "#E67A32",
+                          "name": "23E (XBB.2.3)"
                         }
                       ]
                     },
                     {
-                      "color": "#ABBD52",
-                      "name": "22A (Omicron, BA.4)"
+                      "color": "#AEBD50",
+                      "name": "22C (BA.2.12.1)"
+                    },
+                    {
+                      "color": "#A1BE58",
+                      "name": "22B (BA.5)",
+                      "children": [
+                        {
+                          "color": "#C5B945",
+                          "name": "22E (BQ.1)"
+                        }
+                      ]
+                    },
+                    {
+                      "color": "#95BD61",
+                      "name": "22A (BA.4)"
                     }
                   ]
                 }
               ]
             },
             {
-              "color": "#58A2AC",
+              "color": "#5199B8",
               "name": "21E (Theta, P.3)"
             },
             {
-              "color": "#4433BE",
+              "color": "#4530BB",
               "name": "20J (Gamma, P.1)"
             },
             {
-              "color": "#4C24AF",
+              "color": "#4D22AD",
               "name": "20I (Alpha, B.1.1.7)"
             },
             {
@@ -103,7 +119,7 @@
               "name": "20D (B.1.1.1)",
               "children": [
                 {
-                  "color": "#6BB18E",
+                  "color": "#60AA9F",
                   "name": "21G (Lambda, C.37)"
                 }
               ]
@@ -111,15 +127,15 @@
           ]
         },
         {
-          "color": "#3F45C8",
+          "color": "#403FC6",
           "name": "21A (Delta, B.1.617.2)",
           "children": [
             {
-              "color": "#3E58CF",
+              "color": "#3F51CC",
               "name": "21I (Delta)"
             },
             {
-              "color": "#416BCF",
+              "color": "#3F62D0",
               "name": "21J (Delta)"
             }
           ]
@@ -129,11 +145,11 @@
           "name": "20C",
           "children": [
             {
-              "color": "#61AA9D",
+              "color": "#58A2AC",
               "name": "21F (Iota, B.1.526)"
             },
             {
-              "color": "#4A8BC3",
+              "color": "#4681CA",
               "name": "21C (Epsilon, B.1.427/429)"
             },
             {
@@ -147,15 +163,15 @@
           ]
         },
         {
-          "color": "#76B680",
+          "color": "#69B091",
           "name": "21H (Mu, B.1.621)"
         },
         {
-          "color": "#5098B9",
+          "color": "#4B8EC2",
           "name": "21D (Eta, B.1.525)"
         },
         {
-          "color": "#447DCC",
+          "color": "#4272CE",
           "name": "21B (Kappa, B.1.617.1)"
         },
         {
