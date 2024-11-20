@@ -16,7 +16,7 @@ export interface CladesJson {
 export function NextstrainCladesSchema({ d3Ref }: { d3Ref: RefObject<SVGSVGElement> }) {
   const margin = { top: 0, right: 100, bottom: 0, left: 120 }
 
-  const width = 2200 // Change this when the tree grows
+  const width = 2500 // Change this when the tree grows
   const height = 1450 // Change this when the tree grows
 
   const options = { margin, width, height }
