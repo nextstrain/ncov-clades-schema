@@ -1,0 +1,23 @@
+services:
+  nextjs:
+    image: node:16.9.1
+#    volumes:
+#      - $MY_PROJECT_ROOT:/workdir
+#    environment:
+#      - MY_PROJECT_ROOT
+#    working_dir: /workdir
+    command: /bin/bash -c "set -x; echo MY_PROJECT_ROOT=$MY_PROJECT_ROOT; pwd; ls -al .; cd $MY_PROJECT_ROOT; ls -al .; yarn install && yarn next build && yarn next export"
+    restart: no
+
+  nginx:
+    image: nginx:1.27.4
+    volumes:
+      - ./out:/usr/share/nginx/html:ro
+    ports:
+      - "8080:80"
+    environment:
+      - NGINX_ENTRYPOINT_QUIET_LOGS=1
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nginx.rule=Host(ncov-clades-schema.coolify.neherlab.org) && PathPrefix(/)"
+      - "traefik.http.services.nginx.loadbalancer.server.port=8080"

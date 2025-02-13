@@ -3,8 +3,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "build": "next build && next export",
     "lint": "next lint",
     "clean": "rm -rf .next",
     "cleanest": "rm -rf .cache .next node_modules"

@@ -1,3 +1,4 @@
 *
-!/\.nvmrc
 !/\.nixpacks/
+!/\.nvmrc
+!/nginx.conf
