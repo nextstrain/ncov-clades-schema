@@ -54,10 +54,9 @@ http://localhost:3000
 
 1. Add new clade to `src/clades.json` structure, in the right place
 2. Run `https://github.com/nextstrain/ncov-clades-schema/blob/master/src/replace_colors.py` with the right parameters
-   (old number of clades and new number of clades). Currently `--prev-row` should (probably) be 29 (or higher if more
-   than 1 clade added). If a single clade is added, `--future-row` should be 32:
-   `python src/replace_colors.py --prev-row 31 --future-row 32`
-3. Set the colors of new clades to the ones suggested by the script (written to stdout)
+   (old number of clades and new number of clades). In the last update, `--prev-row` was 49, and `--future-row` was 50:
+   `python src/replace_colors.py --prev-row 59 --future-row 50`
+3. This the colors of clades in `src/clades.json` to the ones suggested by the script (changes copied written to stdout)
 4. Adjust the width of the svg as necessary in: `src/components/NextstrainCladesSchema.tsx`
 5. Check results using e.g. `yarn dev` (after dev setup)
 6. Commit, push
