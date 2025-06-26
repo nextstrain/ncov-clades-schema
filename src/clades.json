@@ -41,6 +41,10 @@
                                     {
                                     "color": "#E68935",
                                     "name": "24E (KP.3.1.1)"
+                                    },
+                                    {
+                                    "color": "#F3D7B0",
+                                    "name": "25A (LP.8.1)"
                                     }
                                   ]
                                 },
@@ -56,7 +60,13 @@
                             },
                             {
                               "color": "#E4622E",
-                              "name": "24H (LF.7)"
+                              "name": "24H (LF.7)",
+                              "children": [
+                                    {
+                                    "color": "#FBC3AD",
+                                    "name": "25C (XFG)"
+                                    }
+                              ]
                             },
                             {
                               "color": "#E1542B",
@@ -136,7 +146,13 @@
                     },
                     {
                       "color": "#E29C39",
-                      "name": "24D (XDV.1)"
+                      "name": "24D (XDV.1)",
+                      "children": [
+                        {
+                          "color": "#F3D7B0",
+                          "name": "25B (NB.1.8.1)"
+                        }
+                      ]
                     }
                   ]
                 }
