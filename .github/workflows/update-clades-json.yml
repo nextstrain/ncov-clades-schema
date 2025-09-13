@@ -26,4 +26,4 @@ jobs:
         run: python src/generate_clades_json.py
 
       - name: commit updates
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v6
